@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from enum import Enum
+
+from pydantic import BaseModel
+
 
 class Category(Enum):
     SEWING = "sewing"
@@ -14,10 +16,12 @@ class Category(Enum):
     SPINNING = "spinning"
     FELTING = "felting"
 
+
 class Difficulty(Enum):
     BEGINNER = "beginner"
     INTERMEDIATE = "intermediate"
     EXPERT = "expert"
+
 
 class Project(BaseModel):
     id: str

@@ -1,6 +1,9 @@
-from pydantic import BaseModel
 from uuid import uuid4
-from ..schema.models.project import *
+
+from pydantic import BaseModel
+
+from ..schema.models.project import Category, Difficulty, Project
+
 
 class ProjectCreate(BaseModel):
     name: str
@@ -10,4 +13,10 @@ class ProjectCreate(BaseModel):
 
     def build(self):
         id = str(uuid4())
-        return Project(id = id, name = self.name, description = self.description, category = self.category, difficulty = self.difficulty)
+        return Project(
+            id=id,
+            name=self.name,
+            description=self.description,
+            category=self.category,
+            difficulty=self.difficulty,
+        )

@@ -20,3 +20,22 @@ app = "app:main"
 [build-system]
 requires = ["uv_build>=0.12.21,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"  # adapte à ta version
+
+[tool.ruff.lint]
+select = [
+  "E", "F",   # pycodestyle + pyflakes (erreurs de base)
+  "I",        # tri des imports
+  "UP",       # syntaxe Python moderne
+  "B",        # bugbear (pièges courants)
+  "SIM",      # simplifications
+  "FAST",     # règles spécifiques FastAPI
+]
