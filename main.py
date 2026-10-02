@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response, HTTPException, status
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 from enum import Enum
 from random import randint
@@ -61,7 +61,7 @@ def create_project(project_dummy: ProjectCreate):
     projects.append(project_dummy.build())
     return projects[-1]
 
-@app.get("/projects/{project_id}", status_code=200)
+@app.get("/projects/{project_id}")
 def read_project(project_id: str, response: Response):
     project = list(filter(lambda x: x.id == project_id, projects))
     if len(project) == 0:
