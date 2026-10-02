@@ -15,7 +15,7 @@ class Category(Enum):
     WEAVING = "weaving"
     MACRAME = "macrame"
     SPINNING = "spinning"
-    FELTING = "1felting"
+    FELTING = "felting"
 
 class Difficulty(Enum):
     BEGINNER = "beginner"
