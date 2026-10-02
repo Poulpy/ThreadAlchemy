@@ -2,6 +2,12 @@
 
 Web API using FastAPI in Python.
 
+## Install
+
+```
+uv sync
+```
+
 ## Run
 
 ```
@@ -16,6 +22,11 @@ uv run ruff format .        # formatage (remplace black)
 ```
 
 ## Prek
+
+Install Prek:
+```
+uv run prek install
+```
 
 Add .pre-commit-config.yaml to the root of the project.
 
