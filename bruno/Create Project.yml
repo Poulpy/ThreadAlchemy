@@ -1,0 +1,25 @@
+info:
+  name: Create Project
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: localhost:8000/projects
+  body:
+    type: json
+    data: |-
+      {
+        "name": "serviette en dentelle",
+        "description": "serviette en lin en dentelle aux fuseaux",
+        "category": "lace",
+        "difficulty": "intermediate"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
