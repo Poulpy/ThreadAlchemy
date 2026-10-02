@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Response, status
+from fastapi import FastAPI, Response, HTTPException, status
 from pydantic import BaseModel
 from enum import Enum
 from random import randint
+from uuid import uuid4
 
 class Category(Enum):
     SEWING = "sewing"
@@ -35,7 +36,7 @@ class ProjectCreate(BaseModel):
     difficulty: Difficulty | None = Difficulty.BEGINNER
 
     def build(self):
-        id = str(randint(1, 10000))
+        id = str(uuid4())
         return Project(id = id, name = self.name, description = self.description, category = self.category, difficulty = self.difficulty)
 
 
@@ -64,7 +65,7 @@ def create_project(project_dummy: ProjectCreate):
 def read_project(project_id: str, response: Response):
     project = list(filter(lambda x: x.id == project_id, projects))
     if len(project) == 0:
-        response.status_code = status.HTTP_404_NOT_FOUND
+        raise HTTPException(status_code=404, detail="Project not found")
     else:
-        return project
+        return project[0]
 
