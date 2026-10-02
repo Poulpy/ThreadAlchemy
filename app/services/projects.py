@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from uuid import uuid4
+from ..schema.models.project import *
 
 class ProjectCreate(BaseModel):
     name: str
