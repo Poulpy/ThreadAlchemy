@@ -11,8 +11,11 @@ dependencies = [
     "fastapi[standard]>=0.142.2",
 ]
 
+[entrypoint]
+entrypoint = "app.main:app"
+
 [project.scripts]
-threadasync = "threadasync:main"
+app = "app:main"
 
 [build-system]
 requires = ["uv_build>=0.12.21,<0.13.0"]
