@@ -1,46 +1,7 @@
 from fastapi import APIRouter, FastAPI, HTTPException, status
 from pydantic import BaseModel
-from enum import Enum
-from random import randint
-from uuid import uuid4
 
 router = APIRouter()
-
-class Category(Enum):
-    SEWING = "sewing"
-    KNITTING = "knitting"
-    CROCHET = "crochet"
-    TATTING = "tatting"
-    LACE = "lace"
-    EMBROIDERY = "embroidery"
-    CROSS_STITCH = "cross_stitch"
-    WEAVING = "weaving"
-    MACRAME = "macrame"
-    SPINNING = "spinning"
-    FELTING = "felting"
-
-class Difficulty(Enum):
-    BEGINNER = "beginner"
-    INTERMEDIATE = "intermediate"
-    EXPERT = "expert"
-
-class Project(BaseModel):
-    id: str
-    name: str
-    description: str | None = ""
-    category: Category
-    difficulty: Difficulty | None = Difficulty.BEGINNER
-
-class ProjectCreate(BaseModel):
-    name: str
-    description: str | None = ""
-    category: Category
-    difficulty: Difficulty | None = Difficulty.BEGINNER
-
-    def build(self):
-        id = str(uuid4())
-        return Project(id = id, name = self.name, description = self.description, category = self.category, difficulty = self.difficulty)
-
 
 app = FastAPI()
 projects = [Project(id="1", name= "Casquette", category= Category.SEWING)]
