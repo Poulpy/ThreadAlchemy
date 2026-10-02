@@ -4,22 +4,22 @@ from enum import Enum
 from random import randint
 
 class Category(Enum):
-    SEWING = 0
-    KNITTING = 1
-    CROCHET = 2
-    TATTING = 3
-    LACE = 4
-    EMBROIDERY = 5
-    CROSS_STITCH = 6
-    WEAVING = 7
-    MACRAME = 8
-    SPINNING = 9
-    FELTING = 10
+    SEWING = "sewing"
+    KNITTING = "knitting"
+    CROCHET = "crochet"
+    TATTING = "tatting"
+    LACE = "lace"
+    EMBROIDERY = "embroidery"
+    CROSS_STITCH = "cross_stitch"
+    WEAVING = "weaving"
+    MACRAME = "macrame"
+    SPINNING = "spinning"
+    FELTING = "1felting"
 
 class Difficulty(Enum):
-    BEGINNER = 0
-    INTERMEDIATE = 1
-    EXPERT = 2
+    BEGINNER = "beginner"
+    INTERMEDIATE = "intermediate"
+    EXPERT = "expert"
 
 class Project(BaseModel):
     id: str
@@ -58,9 +58,6 @@ def read_projects():
 @app.post("/projects", status_code=status.HTTP_201_CREATED)
 def create_project(project_dummy: ProjectCreate):
     projects.append(project_dummy.build())
-    print(projects)
-    print(projects[0])
-    print(projects[1])
     return projects[-1]
 
 @app.get("/projects/{project_id}", status_code=200)
