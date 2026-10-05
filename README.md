@@ -4,8 +4,13 @@ Web API using FastAPI in Python.
 
 ## Install
 
-```
+```bash
 uv sync
+cp .env.example .env
+# Edit .env with your database config
+# Run the database with docker
+docker compose up -d
+uv run alembic upgrade head
 ```
 
 ## Run

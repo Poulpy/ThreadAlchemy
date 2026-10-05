@@ -24,7 +24,7 @@ class Difficulty(Enum):
 
 
 class Project(BaseModel):
-    id: str
+    id: int
     name: str
     description: str | None = ""
     category: Category
